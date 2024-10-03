@@ -6,5 +6,5 @@ Database scripts are for forensics IRT migration + integration into pre-existing
 
 Bash:
 
-chmod +x
-forest.sh
+chmod +x forest.sh
+./forest.sh
