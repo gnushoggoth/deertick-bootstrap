@@ -1,0 +1,28 @@
+auto lo
+iface lo inet loopback
+
+iface eno1 inet manual
+
+auto vmbr0
+iface vmbr0 inet static
+        address 51.89.19.157/24
+        gateway 51.89.19.254
+        bridge-ports eno1
+        bridge-stp off
+        bridge-fd 0
+
+auto vmbr1
+iface vmbr1 inet static
+        address 192.168.1.1/24
+        bridge-ports none
+        bridge-stp off
+        bridge-fd 0
+
+# vRack network
+auto vmbr2
+iface vmbr2 inet static
+        address 192.168.100.1/29  # Replace with the first IP of your vRack block
+        bridge-ports none
+        bridge-stp off
+        bridge-fd 0
+        post-up ip route add 192.168.100.0/29 dev vmbr2  # Replace with your actual vRack subnet
